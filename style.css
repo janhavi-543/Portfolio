@@ -1,0 +1,171 @@
+:root{
+  --bg:#0b061a;
+  --text:#ffffff;
+  --card:rgba(255,255,255,0.1);
+  --accent:#c084fc;
+}
+
+.light{
+  --bg:#f5f3ff;
+  --text:#1e1b4b;
+  --card:#ffffff;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui;
+  background:var(--bg);
+  color:var(--text);
+  transition:0.3s;
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  padding:14px 20px;
+  background:linear-gradient(90deg,#7c3aed,#c084fc);
+}
+
+.nav{
+  display:flex;
+  justify-content:space-between;
+  padding:14px 20px;
+  background:indigo;
+}
+
+.toggle{
+  background:none;
+  border:none;
+  font-size:18px;
+  cursor:pointer;
+}
+
+.profile{
+  text-align:center;
+  padding:40px 20px;
+}
+
+.avatar{
+  width:140px;
+  height:140px;
+  margin:auto;
+  border-radius:50%;
+  padding:5px;
+  background:linear-gradient(135deg,#7c3aed,#c084fc);
+}
+
+.avatar img{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+h1{
+  background:linear-gradient(90deg,#7c3aed,#c084fc);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.links a{
+  margin:0 10px;
+  text-decoration:none;
+  color:var(--accent);
+  font-weight:600;
+}
+
+.resume-btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:12px 22px;
+  background:linear-gradient(135deg,#7c3aed,#c084fc);
+  color:white;
+  text-decoration:none;
+  border-radius:25px;
+  transition:.3s;
+}
+.resume-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 15px var(--accent);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:20px;
+  padding:30px;
+}
+
+.card{
+  background:var(--card);
+  padding:30px;
+  border-radius:18px;
+  text-align:center;
+  text-decoration:none;
+  color:var(--text);
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 20px rgba(192,132,252,0.5);
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:var(--accent);
+}
+
+body.light .footer p{
+  color: #0b061a;
+}
+
+body.light .quick-links a{
+  color:#000;      
+}
+
+body.light .contact-item{
+  color:#000;
+}
+
+.contact-links{
+  display:flex;
+  flex-direction:column; /* each item on new line */
+  align-items:center;    /* center horizontally */
+  gap:12px;              /* spacing between links */
+  margin-top:20px;
+}
+
+.contact-item{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  font-size:16px;
+  color:#8b5cf6;  /* purple theme */
+}
+
+.contact-item img{
+  width:20px;
+  height:20px;
+  display:block;
+}
+
+/* Light theme color */
+body.light .contact-item{
+  color:#000;
+}
+
+body.light {
+  background: #f4f4f4;
+  color: #111;
+}
+
+/* Optional: adjust navbar or other elements for light mode */
+body.light .nav-name {
+  color: #000;
+}
+

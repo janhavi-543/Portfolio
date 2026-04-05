@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me</title>
+<style>
+/* ===== BODY & THEME ===== */
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:radial-gradient(circle at top,#0b1026,#020412);
+  color:white;
+  transition: background .5s, color .5s;
+}
+
+body.light{
+  background: #f3f3f3;
+  color: #1a1a1a;
+}
+
+/* ===== HEADER ===== */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 20px;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+header h1{
+  color:#b388ff;
+  margin:0;
+  font-size:28px;
+  flex:1;
+  text-align:center;
+}
+
+.toggle-btn, .back-btn{
+  cursor:pointer;
+  padding:10px 20px;
+  border:none;
+  border-radius:20px;
+  background:linear-gradient(135deg,#7f00ff,#b388ff);
+  color:white;
+  font-weight:bold;
+  flex-shrink:0;
+}
+
+.back-btn{
+  margin-right:10px;
+}
+
+/* ===== WELCOME / PROFILE ===== */
+.welcome{
+  text-align:center;
+  padding:40px 20px;
+}
+
+.welcome img{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  border:3px solid #b388ff;
+  object-fit:cover;
+  transition:transform .4s, box-shadow .4s;
+}
+
+.welcome img:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 25px rgba(179,136,255,.6);
+}
+
+.welcome h2{
+  margin-top:20px;
+  font-size:28px;
+  color:#b388ff;
+}
+
+body.light .welcome h2{
+  color: black;
+}
+
+.welcome h3{
+  margin-top:5px;
+  font-weight:400;
+  color:#ddd;
+}
+
+body.light .welcome h3{
+  color: #333;
+}
+
+.resume-btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:10px 25px;
+  border-radius:25px;
+  text-decoration:none;
+  background:linear-gradient(135deg,#7f00ff,#b388ff);
+  color:white;
+  font-weight:bold;
+  transition:.3s;
+}
+.resume-btn:hover{
+  transform:scale(1.05);
+}
+
+/* ===== ABOUT INFO CARDS ===== */
+.about-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+  max-width:1000px;
+  margin:50px auto;
+  padding:0 20px;
+}
+
+.about-card{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(14px);
+  border-radius:20px;
+  padding:20px;
+  transition:.4s;
+  cursor:default;
+}
+
+body.light .about-card{
+  background: #ecd2f9;
+  color: black;
+}
+
+.about-card:hover{
+  box-shadow:0 0 25px rgba(179,136,255,.6);
+}
+
+.about-card h3{
+  margin-top:0;
+  color:#b388ff;
+}
+
+body.light .about-card h3{
+  color: #7f00ff;
+}
+
+.about-card p{
+  line-height:1.6;
+  color:#ddd;
+}
+
+body.light .about-card p{
+  color:#333;
+}
+
+/* ===== QUICK LINKS ===== */
+.quick-links{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  margin:50px 0 80px;
+}
+
+.quick-links a{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  padding:10px 20px;
+  border-radius:25px;
+  background:linear-gradient(135deg,#7f00ff,#b388ff);
+  color:white;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.quick-links a:hover{
+  transform:scale(1.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+  header{
+    flex-wrap:nowrap;
+  }
+
+  header h1{
+    font-size:20px;
+  }
+
+  .welcome h2{
+    font-size:24px;
+  }
+
+  .welcome img{
+    width:120px;
+    height:120px;
+  }
+}
+
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:var(--accent);
+}
+
+body.light .footer p{
+  color: #0b061a;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<header>
+  <button class="back-btn" onclick="goBack()">⬅</button>
+  <h1>About Me</h1>
+  <button class="toggle-btn" onclick="toggleTheme()">🌗</button>
+</header>
+
+<section class="welcome">
+  <img src="avatar.png" alt="Avatar">
+  <h2>Janhavi Warke</h2>
+  <h3>Pursuing MCA - FY Student</h3>
+  <a href="#" class="resume-btn">Download Resume</a>
+</section>
+
+<section class="about-grid">
+  <div class="about-card">
+    <h3>Bio</h3>
+    <p>Hello! I'm Janhavi, an enthusiastic Full Stack Developer with a passion for creating interactive and responsive web applications. 
+      I like coding, exploring new technologies, and building projects that make a difference.
+    I am Data Science Aspirant building my strong skills in Artificial Intelligence and Machine Learning.</p>
+  </div>
+
+  <div class="about-card">
+    <h3>Skills</h3>
+    <p>HTML, CSS, JavaScript, React, Node.js, PHP, Django, Flutter, Bootstrap, MongoDB, MySQL, Git, GitHub,
+       VS Code, Visual Studio, Android Studio, Dart, CodeIgnitor</p>
+  </div>
+
+  <div class="about-card">
+    <h3>Hobbies</h3>
+    <p>Coding challenges, UI/UX design, learning new frameworks, exploring AI & ML,
+      Others: Listening to music, and traveling.</p>
+  </div>
+
+  <div class="about-card">
+    <h3>Education</h3>
+    <p>MCA – Pursuing Master of Computer Applications from Savitribai Phule Pune University. 
+      Strong foundation in Full Stack Web Development and Python,Java Developement principles.</p>
+  </div>
+</section>
+
+<section class="quick-links">
+  <a href="https://linkedin.com/in/janhavi-warke"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"> LinkedIn</a>
+  <a href="mailto:janhavii543@gmail.com"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" width="20"> Gmail</a>
+  <a href="https://github.com/janhavi-543"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="20"> GitHub</a>
+</section>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle("light");
+}
+
+function goBack(){
+  window.history.back();
+}
+</script>
+
+<footer class="footer">
+  <p>© 2025 Janhavi Warke. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

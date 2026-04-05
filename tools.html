@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tools & Technologies</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:radial-gradient(circle at top,#0b1026,#020412);
+  color:white;
+  transition:all .3s;
+}
+
+/* TOP BAR */
+.top-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 25px;
+}
+
+/* BACK ARROW */
+.back-arrow{
+  font-size:22px;
+  cursor:pointer;
+  color:white;
+  transition:.3s;
+}
+.back-arrow:hover{
+  color:#b388ff;
+}
+
+/* THEME TOGGLE */
+.theme-toggle{
+  font-size:22px;
+  cursor:pointer;
+  color:white;
+  transition:.3s;
+}
+.theme-toggle:hover{
+  color:#b388ff;
+}
+
+/* HEADING */
+h2{
+  text-align:center;
+  color:#b388ff;
+  margin:20px 0;
+}
+
+/* CATEGORY BUTTONS */
+.categories{
+  text-align:center;
+  margin-bottom:25px;
+}
+.categories button{
+  background:rgba(255,255,255,.08);
+  border:none;
+  color:white;
+  padding:10px 18px;
+  margin:6px;
+  border-radius:20px;
+  cursor:pointer;
+  transition:.2s;
+}
+.categories button:hover{
+  transform:scale(1.05);
+}
+.categories button.active{
+  background:linear-gradient(135deg,#7f00ff,#b388ff);
+  box-shadow:0 0 15px rgba(179,136,255,.6);
+}
+
+/* GRID */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:30px;
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+  justify-items:center;
+}
+
+/* GLASS CARD */
+.glass{
+  width:140px;
+  height:150px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:22px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:.3s;
+}
+.glass:hover{
+  transform:none;
+  box-shadow:none;
+}
+
+/* LOGO */
+.glass img{
+  width:48px;
+  height:48px;
+  transition:.3s;
+}
+
+/* NAME */
+.skill-name{
+  margin-top:14px;
+  font-weight:bold;
+  opacity:0;
+  transform:translateY(15px);
+  transition:.3s;
+  color:#e5ddff;
+}
+
+/* CLICK GLOW EFFECT */
+.glass.active{
+  box-shadow:
+    0 0 25px rgba(179,136,255,.6),
+    0 0 45px rgba(127,0,255,.4);
+}
+.glass.active img{
+  transform:translateY(-8px) scale(.9);
+}
+.glass.active .skill-name{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* MOBILE */
+@media(max-width:500px){
+  .glass{width:130px;height:145px}
+}
+
+/* LIGHT MODE */
+body.light{
+  background:radial-gradient(circle at top,#f9f9f9,#e0e0e0);
+  color:#111;
+}
+body.light h2{
+  color:#6a0dad;
+}
+body.light .categories button{
+  color:#111;
+  background:#ffffffcc;
+}
+body.light .categories button:hover{
+  transform:scale(1.03);
+}
+body.light .categories button.active{
+  background:linear-gradient(135deg,#6a0dad,#b388ff);
+  box-shadow:0 0 10px rgba(179,136,255,.4);
+}
+body.light .glass{
+  background:#ffffffcc;
+  border:1px solid rgba(0,0,0,0.1);
+}
+body.light .skill-name{
+  color:#111;
+}
+body.light .back-arrow, body.light .theme-toggle{
+  color:#111;
+}
+
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:var(--accent);
+}
+
+body.light .footer p{
+  color: #0b061a;
+}
+
+body.light .quick-links a{
+  color:#000;      
+}
+
+body.light .contact-item{
+  color:#000;
+}
+
+.contact-links{
+  display:flex;
+  flex-direction:column; /* each item on new line */
+  align-items:center;    /* center horizontally */
+  gap:12px;              /* spacing between links */
+  margin-top:20px;
+}
+
+.contact-item{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  font-size:16px;
+  color:#8b5cf6;  /* purple theme */
+}
+
+.contact-item img{
+  width:20px;
+  height:20px;
+  display:block;
+}
+
+/* Light theme color */
+body.light .contact-item{
+  color:#000;
+}
+/* ===== HEADER ===== */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 20px;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+header h1{
+  color:#b388ff;
+  margin:0;
+  font-size:28px;
+  flex:1;
+  text-align:center;
+}
+
+.toggle-btn, .back-btn{
+  cursor:pointer;
+  padding:10px 20px;
+  border:none;
+  border-radius:20px;
+  background:linear-gradient(135deg,#7f00ff,#b388ff);
+  color:white;
+  font-weight:bold;
+  flex-shrink:0;
+}
+
+.back-btn{
+  margin-right:10px;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <button class="back-btn" onclick="goBack()">⬅</button>
+  <h1></h1>
+  <button class="toggle-btn" onclick="toggleTheme()">🌗</button>
+</header>
+
+<h2>Tools & Technologies</h2>
+
+<!-- CATEGORIES -->
+<div class="categories">
+  <button class="active" onclick="filterSkills('all',this)">All</button>
+  <button onclick="filterSkills('languages',this)">Languages</button>
+  <button onclick="filterSkills('web',this)">Web</button>
+  <button onclick="filterSkills('framework',this)">Framework</button>
+  <button onclick="filterSkills('database',this)">Database</button>
+  <button onclick="filterSkills('backend',this)">Backend</button>
+  <button onclick="filterSkills('mobile',this)">Mobile</button>
+  <button onclick="filterSkills('tools',this)">Tools</button>
+</div>
+
+<div class="skills-grid">
+
+  <!-- LANGUAGES -->
+  <div class="glass languages" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg">
+    <div class="skill-name">C</div>
+  </div>
+
+  <div class="glass languages" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg">
+    <div class="skill-name">C++</div>
+  </div>
+
+  <div class="glass languages" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg">
+    <div class="skill-name">Java</div>
+  </div>
+
+  <div class="glass languages" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
+    <div class="skill-name">Python</div>
+  </div>
+
+  <!-- WEB -->
+  <div class="glass web" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">
+    <div class="skill-name">HTML</div>
+  </div>
+
+  <div class="glass web" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg">
+    <div class="skill-name">CSS</div>
+  </div>
+
+  <div class="glass web" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+    <div class="skill-name">JavaScript</div>
+  </div>
+
+  <div class="glass web" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg">
+    <div class="skill-name">Bootstrap</div>
+  </div>
+
+  <!-- FRAMEWORK -->
+  <div class="glass framework" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg">
+    <div class="skill-name">React</div>
+  </div>
+
+  <div class="glass framework" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg">
+    <div class="skill-name">Django</div>
+  </div>
+
+  <div class="glass framework" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg">
+    <div class="skill-name">Flutter</div>
+  </div>
+
+  <div class="glass framework" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/codeigniter/codeigniter-plain.svg">
+    <div class="skill-name">CodeIgniter</div>
+  </div>
+
+  <!-- DATABASE -->
+  <div class="glass database" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg">
+    <div class="skill-name">MySQL</div>
+  </div>
+
+  <div class="glass database" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg">
+    <div class="skill-name">MongoDB</div>
+  </div>
+
+  <!-- BACKEND -->
+  <div class="glass backend" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg">
+    <div class="skill-name">PHP</div>
+  </div>
+
+  <div class="glass backend" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg">
+    <div class="skill-name">Node.js</div>
+  </div>
+
+  <!-- MOBILE -->
+  <div class="glass mobile" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg">
+    <div class="skill-name">Android</div>
+  </div>
+
+  <!-- TOOLS -->
+  <div class="glass tools" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg">
+    <div class="skill-name">Git</div>
+  </div>
+
+  <div class="glass tools" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg">
+    <div class="skill-name">GitHub</div>
+  </div>
+
+  <div class="glass tools" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg">
+    <div class="skill-name">VS Code</div>
+  </div>
+
+  <div class="glass tools" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg">
+    <div class="skill-name">Visual Studio</div>
+  </div>
+
+  <div class="glass tools" onclick="toggleSingle(this)">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg">
+    <div class="skill-name">Android Studio</div>
+  </div>
+
+</div>
+
+<script>
+// Toggle only one card at a time
+function toggleSingle(card){
+  document.querySelectorAll('.glass').forEach(c=>{
+    if(c!==card) c.classList.remove('active');
+  });
+  card.classList.toggle('active');
+}
+
+function filterSkills(type,btn){
+  document.querySelectorAll('.categories button')
+    .forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.glass').forEach(card=>{
+    card.style.display =
+      (type==='all'||card.classList.contains(type))
+      ? 'flex' : 'none';
+    // remove active state when filtering
+    card.classList.remove('active');
+  });
+}
+function toggleTheme(){
+  document.body.classList.toggle("light");
+}
+
+function goBack(){
+  window.history.back();
+}
+
+</script>
+
+<footer class="footer">
+  <p>© 2025 Janhavi Warke. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

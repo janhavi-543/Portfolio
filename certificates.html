@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificates</title>
+<style>
+  /* ===== THEME VARIABLES ===== */
+  :root {
+    --dark-bg: #0d0d1a;
+    --light-bg: #f0f0f5;
+    --dark-text: #f5f5f5;
+    --light-text: #1a1a2e;
+    --purple-gradient: linear-gradient(135deg, #8e2de2, #4a00e0);
+    --card-bg-dark: rgba(255, 255, 255, 0.05);
+    --card-bg-light: #e6e0f8;
+    --glitter-color: #fff;
+    --shadow-dark: 0 10px 25px rgba(0,0,0,0.5);
+    --shadow-light: 0 10px 25px rgba(0,0,0,0.1);
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    transition: all 0.3s ease;
+  }
+
+  body.light-mode {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    background: var(--purple-gradient);
+    color: #fff;
+    position: relative;
+    transition: 0.3s;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    text-align: center;
+  }
+
+  /* Symbol buttons (no box) */
+  .symbol-btn {
+    position: absolute;
+    top: 10px;
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .symbol-btn:hover {
+    transform: scale(1.2);
+  }
+
+  .back-btn {
+    left: 20px;
+  }
+
+  .theme-toggle {
+    right: 20px;
+  }
+
+  /* ===== GRID CONTAINER ===== */
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    transition: all 0.3s ease;
+  }
+
+  /* ===== CERTIFICATE CARD ===== */
+  .certificate-card {
+    background: var(--card-bg-dark);
+    backdrop-filter: blur(15px);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-dark);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    color: var(--dark-text);
+  }
+
+  body.light-mode .certificate-card {
+    background: var(--card-bg-light);
+    box-shadow: var(--shadow-light);
+    color: #000; /* certificate text in black */
+  }
+
+  .certificate-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(138,43,226,0.6);
+  }
+
+  .certificate-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  /* ===== GLITTER LINE ===== */
+  .glitter-line {
+    height: 3px;
+    width: 80px;
+    margin: 0.5rem auto 0.8rem auto;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #fff, #ffd700, #fff);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  .certificate-desc {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .certificate-date {
+    font-size: 0.85rem;
+    color: #aaa;
+  }
+
+  body.light-mode .certificate-date {
+    color: #555;
+  }
+  
+footer{
+  text-align:center;
+  padding:25px;
+  color:var(--accent);
+}
+
+body.light .footer p{
+  color: #0b061a;
+}
+
+body.light .quick-links a{
+  color:#000;      
+}
+
+body.light .contact-item{
+  color:#000;
+}
+
+.contact-links{
+  display:flex;
+  flex-direction:column; /* each item on new line */
+  align-items:center;    /* center horizontally */
+  gap:12px;              /* spacing between links */
+  margin-top:20px;
+}
+
+.contact-item{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  font-size:16px;
+  color:#8b5cf6;  /* purple theme */
+}
+
+.contact-item img{
+  width:20px;
+  height:20px;
+  display:block;
+}
+
+/* Light theme color */
+body.light .contact-item{
+  color:#000;
+}
+
+  /* ===== RESPONSIVE MOBILE ===== */
+  @media screen and (max-width: 900px) {
+    .container {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .container {
+      grid-template-columns: 1fr;
+      padding: 0 0.5rem;
+    }
+    .back-btn, .theme-toggle {
+      top: 5px;
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <button class="symbol-btn back-btn" onclick="window.history.back()">←</button>
+  <h1>Certificates</h1>
+  <button class="symbol-btn theme-toggle" onclick="toggleMode()">🌓</button>
+</header>
+
+<div class="container">
+  <div class="certificate-card">
+    <div class="certificate-title">Google Ads For Beginners Certificate</div>
+    <div class="glitter-line"></div>
+    <div class="certificate-desc">
+      • Gained beginner-level, practical knowledge of Google Ads
+      • Learned how to set up and manage basic search campaigns
+
+    </div>
+    <div class="certificate-date">Issued: Jul 2025</div>
+  </div>
+
+  <div class="certificate-card">
+    <div class="certificate-title">Delottie Cyber Job Simulation Certificate</div>
+    <div class="glitter-line"></div>
+    <div class="certificate-desc">
+      A short, hands-on experience that helped me learn more about 𝗰𝘆𝗯𝗲𝗿𝘀𝗲𝗰𝘂𝗿𝗶𝘁𝘆.
+    </div>
+    <div class="certificate-date">Issued: May 2025</div>
+  </div>
+
+  <div class="certificate-card">
+    <div class="certificate-title">𝐅𝐨𝐮𝐧𝐝𝐚𝐭𝐢𝐨𝐧𝐬: 𝐃𝐚𝐭𝐚, 𝐃𝐚𝐭𝐚, 𝐄𝐯𝐞𝐫𝐲𝐰𝐡𝐞𝐫𝐞 Course Certificate By Google</div>
+    <div class="glitter-line"></div>
+    <div class="certificate-desc">
+      This course deepened my understanding of the 𝐝𝐚𝐭𝐚 𝐚𝐧𝐚𝐥𝐲𝐬𝐢𝐬 𝐩𝐫𝐨𝐜𝐞𝐬𝐬, 
+      𝐝𝐚𝐭𝐚 𝐥𝐢𝐟𝐞 𝐜𝐲𝐜𝐥𝐞, and 𝐝𝐚𝐭𝐚-𝐝𝐫𝐢𝐯𝐞𝐧 𝐝𝐞𝐜𝐢𝐬𝐢𝐨𝐧-𝐦𝐚𝐤𝐢𝐧𝐠, helping me build a more 𝐚𝐧𝐚𝐥𝐲𝐭𝐢𝐜𝐚𝐥 𝐚𝐧𝐝
+     𝐬𝐭𝐫𝐮𝐜𝐭𝐮𝐫𝐞𝐝 𝐦𝐢𝐧𝐝𝐬𝐞𝐭 to solve problems and interpret insights effectively.
+    </div>
+    <div class="certificate-date">Issued: July 2025</div>
+  </div>
+</div>
+
+<script>
+  // Dark/Light mode toggle
+  const body = document.body;
+  function toggleMode() {
+    body.classList.toggle('light-mode');
+  }
+</script>
+
+  <div class="quick-links">
+     <center><font size="5" ><b>Get in Touch</b></font>
+
+        <font size="4" >
+      <div class="contact-links">
+      <a href="mailto:janhavii543@gmail.com" class="contact-item gmail">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
+        <span>Gmail</span>
+      </a>
+      <a href="https://linkedin.com/in/janhavi-warke" class="contact-item linkedin">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+        <span>LinkedIn</span>
+      </a>
+      <a href="https://github.com/janhavi-543" class="contact-item github">
+    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+    <span>GitHub</span>
+  </a>
+      </div>
+
+      <p>📍 Pune, Maharashtra</p>
+       </font></center>
+  </div>
+
+<footer class="footer">
+  <p>© 2025 Janhavi Warke. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
+
+</html>

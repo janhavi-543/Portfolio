@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Education</title>
+
+<style>
+/* ===== THEME VARIABLES ===== */
+:root {
+  --dark-bg: #0d0d1a;
+  --light-bg: #f0f0f5;
+  --dark-text: #f5f5f5;
+  --light-text: #1a1a2e;
+
+  --card-bg-dark: rgba(255, 255, 255, 0.05);
+  --card-bg-light: #e6e0f8;
+
+  --shadow-dark: 0 10px 25px rgba(0,0,0,0.5);
+  --shadow-light: 0 10px 25px rgba(0,0,0,0.15);
+
+  --glitter-line-color: linear-gradient(90deg, #ffd700, #8e2de2, #c034eb, #ffd700);
+}
+
+/* ===== BODY ===== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  transition: all 0.3s ease;
+}
+
+body.light-mode {
+  background-color: var(--light-bg);
+  color: var(--light-text);
+}
+
+/* ===== HEADER ===== */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #c034eb;
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+/* HEADING COLOR */
+header h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: #ffffff; /* dark */
+  transition: color 0.3s ease;
+}
+
+body.light-mode header h1 {
+  color: #000000; /* light */
+}
+
+/* SYMBOL BUTTONS */
+.symbol-btn {
+  position: absolute;
+  top: 10px;
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+body.light-mode .symbol-btn {
+  color: #000000;
+}
+
+.back-btn { left: 20px; }
+.theme-toggle { right: 20px; }
+
+/* ===== GRID CONTAINER (NO BACKGROUND) ===== */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* ===== EDUCATION CARD ===== */
+.edu-card {
+  background: var(--card-bg-dark);
+  backdrop-filter: blur(15px);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-dark);
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+body.light-mode .edu-card {
+  background: var(--card-bg-light);
+  box-shadow: var(--shadow-light);
+  color: #000000;
+}
+
+/* CARD HOVER */
+.edu-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(138,43,226,0.6);
+}
+
+/* LIGHT MODE CARD HOVER */
+body.light-mode .edu-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+}
+
+/* ===== TEXT ===== */
+.edu-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* GLITTER LINE */
+.glitter-line {
+  height: 3px;
+  width: 80px;
+  margin: 0.6rem auto;
+  border-radius: 2px;
+  background: var(--glitter-line-color);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.edu-desc {
+  font-size: 0.95rem;
+  margin-top: 0.4rem;
+}
+
+.edu-date {
+  font-size: 0.85rem;
+  color: #aaaaaa;
+}
+
+body.light-mode .edu-date {
+  color: #555555;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:var(--accent);
+}
+
+body.light .footer p{
+  color: #0b061a;
+}
+
+body.light .quick-links a{
+  color:#000;      
+}
+
+body.light .contact-item{
+  color:#000;
+}
+
+.contact-links{
+  display:flex;
+  flex-direction:column; /* each item on new line */
+  align-items:center;    /* center horizontally */
+  gap:12px;              /* spacing between links */
+  margin-top:20px;
+}
+
+.contact-item{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  font-size:16px;
+  color:#8b5cf6;  /* purple theme */
+}
+
+.contact-item img{
+  width:20px;
+  height:20px;
+  display:block;
+}
+
+/* Light theme color */
+body.light .contact-item{
+  color:#000;
+}
+
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <button class="symbol-btn back-btn" onclick="window.history.back()">←</button>
+  <h1>Education</h1>
+  <button class="symbol-btn theme-toggle" onclick="toggleMode()">🌓</button>
+</header>
+
+<div class="container">
+  <div class="edu-card">
+    <div class="edu-title">MCA</div>
+    <div class="glitter-line"></div>
+    <div class="edu-desc">Pratibha Institute of Business Management, Pune | 2025 - 2027 | Pursuing</div>
+    <div class="edu-date">Master of Computer Applications</div>
+  </div>
+
+  <div class="edu-card">
+    <div class="edu-title">BCA</div>
+    <div class="glitter-line"></div>
+    <div class="edu-desc">P.O.Nahata College | 2022 - 2025 | Percentage: 84.9%</div>
+    <div class="edu-date">Bachelor of Computer Science</div>
+  </div>
+
+  <div class="edu-card">
+    <div class="edu-title">HSC</div>
+    <div class="glitter-line"></div>
+    <div class="edu-desc">P.O. Nahata College | 2021 - 2022 | Percentage: 66%</div>
+    <div class="edu-date">Higher Secondary Certificate</div>
+  </div>
+</div>
+
+<script>
+function toggleMode() {
+  document.body.classList.toggle('light-mode');
+}
+</script>
+
+  <div class="quick-links">
+     <center><font size="5" ><b>Get in Touch</b></font>
+
+        <font size="4" >
+      <div class="contact-links">
+      <a href="mailto:janhavii543@gmail.com" class="contact-item gmail">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
+        <span>Gmail</span>
+      </a>
+      <a href="https://linkedin.com/in/janhavi-warke" class="contact-item linkedin">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+        <span>LinkedIn</span>
+      </a>
+      <a href="https://github.com/janhavi-543" class="contact-item github">
+    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+    <span>GitHub</span>
+  </a>
+      </div>
+
+      <p>📍 Pune, Maharashtra</p>
+       </font></center>
+  </div>
+
+<footer class="footer">
+  <p>© 2025 Janhavi Warke. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internships</title>
+
+<style>
+/* ===== BASE ===== */
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#1a0a2f;
+  color:#fff;
+  transition:.3s;
+}
+body.light-mode{
+  background:#faf7ff;
+  color:#000;
+}
+a{color:inherit;text-decoration:none}
+
+/* ===== HEADER ===== */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:15px 20px;
+  position:sticky;
+  top:0;
+  background:#5a2d91; /* dark purple background */
+}
+body.light-mode .header{
+  background:#d9cfff; /* light purple background */
+}
+.back-arrow{font-size:1.6rem}
+#theme-icon{cursor:pointer;font-size:1.5rem}
+
+/* ===== PAGE TITLE ===== */
+.page-title{
+  flex:1;
+  text-align:center;
+  font-size:2rem;
+  margin:0;
+  color:#fff;
+}
+body.light-mode .page-title{
+  color:#000;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+
+/* ===== GRID ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+
+/* ===== CARD ===== */
+.card{
+  background:rgba(255,255,255,.05);
+  border-radius:14px;
+  padding:22px;
+  border:1px solid rgba(255,255,255,.2);
+  transition:.3s;
+}
+body.light-mode .card{
+  background:#ffffff;
+  border:1px solid #e2d9ff;
+}
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 12px rgba(155,89,255,.45);
+}
+
+/* ===== INTERNSHIP TITLE ===== */
+.card-title{
+  font-size:1.25rem;
+  margin:0 0 8px 0;
+  text-align:center;
+  color:#fff; /* dark mode default */
+  position:relative;
+  display:inline-block;
+}
+
+/* Internship name text color in light mode */
+body.light-mode .card-title{
+  color:#000; /* ✅ black in light mode */
+}
+
+/* SHINY UNDERLINE */
+.card-title::after{
+  content:"";
+  position:absolute;
+  bottom:-4px;
+  left:0;
+  width:0;
+  height:3px;
+  border-radius:3px;
+  background:linear-gradient(120deg,#cfcfcf,#fff,#cfcfcf); /* dark mode silver */
+  background-size:200%;
+  transition:.4s;
+}
+body.light-mode .card-title::after{
+  background:linear-gradient(120deg,#000000,#333333,#000000); /* dark black shiny */
+}
+
+/* ON HOVER ANIMATION */
+.card:hover .card-title::after{
+  width:100%;
+  animation:shine 1.2s linear infinite;
+}
+
+/* ===== TEXT ===== */
+.card-company,
+.card-duration{
+  text-align:center;
+  font-size:.9rem;
+  color:#ccc;
+}
+body.light-mode .card-company,
+body.light-mode .card-duration{
+  color:#5a2d91;
+}
+.card-description{
+  margin-top:10px;
+  text-align:center;
+  font-size:.95rem;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:var(--accent);
+}
+
+body.light .footer p{
+  color: #0b061a;
+}
+
+body.light .quick-links a{
+  color:#000;      
+}
+
+body.light .contact-item{
+  color:#000;
+}
+
+.contact-links{
+  display:flex;
+  flex-direction:column; /* each item on new line */
+  align-items:center;    /* center horizontally */
+  gap:12px;              /* spacing between links */
+  margin-top:20px;
+}
+
+.contact-item{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  font-size:16px;
+  color:#8b5cf6;  /* purple theme */
+}
+
+.contact-item img{
+  width:20px;
+  height:20px;
+  display:block;
+}
+
+/* Light theme color */
+body.light .contact-item{
+  color:#000;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes shine{
+  from{background-position:0%}
+  to{background-position:200%}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body class="dark-mode">
+
+<header class="header">
+  <a href="index.html" class="back-arrow">←</a>
+  <h1 class="page-title">Internships & Experiences </h1>
+  <span id="theme-icon">🌙</span>
+</header>
+
+<main class="container">
+  <div class="grid">
+
+    <div class="card">
+      <h2 class="card-title">Infosys Springboard Pragati Cohort - 7 Path To Future</h2>
+      <p class="card-company"><font size ="5">Infosys Springboard</font></p>
+      <p class="card-duration">Dec 2025</p>
+      <p class="card-description">
+        A part of Pragati Cohort - 7 Path to Future Program by Infosys Springboard.
+        Currently gaining training and experience through online session conducting by 
+        cohort mentors. 
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<script>
+const icon=document.getElementById("theme-icon");
+icon.onclick=()=>{
+  document.body.classList.toggle("light-mode");
+  document.body.classList.toggle("dark-mode");
+  icon.textContent =
+    document.body.classList.contains("dark-mode") ? "🌙" : "☀️";
+};
+</script>
+
+
+  <div class="quick-links">
+     <center><font size="5" ><b>Get in Touch</b></font>
+
+        <font size="4" >
+      <div class="contact-links">
+      <a href="mailto:janhavii543@gmail.com" class="contact-item gmail">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
+        <span>Gmail</span>
+      </a>
+      <a href="https://linkedin.com/in/janhavi-warke" class="contact-item linkedin">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+        <span>LinkedIn</span>
+      </a>
+      <a href="https://github.com/janhavi-543" class="contact-item github">
+    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+    <span>GitHub</span>
+  </a>
+      </div>
+
+      <p>📍 Pune, Maharashtra</p>
+       </font></center>
+  </div>
+
+<footer class="footer">
+  <p>© 2025 Janhavi Warke. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
