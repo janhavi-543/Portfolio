@@ -169,3 +169,33 @@ body.light .nav-name {
   color: #000;
 }
 
+/* Clean icon-only toggle button */
+.theme-toggle {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  font-size: 22px;
+  cursor: pointer;
+
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Remove tap highlight (mobile) */
+.theme-toggle:focus,
+.theme-toggle:active {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Optional hover effect */
+.theme-toggle:hover {
+  transform: scale(1.2);
+  transition: 0.2s;
+}
